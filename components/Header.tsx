@@ -1,25 +1,33 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'; 
+import { FlipInEasyX } from 'react-native-reanimated';
 
 const Header = ({navigation}: {navigation: any}) => {
   return (
     <View style={styles.header}>
-      <Ionicons style={styles.menu} name="menu" size={46} color="white" onPress={ () => navigation.openDrawer()}/>
-      <Text style={styles.text}>FK SREMAC</Text>
-      <Image source={require('../assets/logo.jpg')} style={{ width: 40, height: 50, marginRight: 10 }}/>
+      <View style={styles.logo}>
+      <Image source={require('../assets/logo9.png')} style={{ width: 45, height: 66.26, marginRight: 5, marginLeft: 10 }}/>
+      <Text style={styles.text}>FK Sremac</Text>
+      </View>
+      <Ionicons style={styles.menu} name="menu" size={52} color="white" onPress={ () => navigation.openDrawer()}/>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   header: {
-    height:60,
+    height:73,
     width: "100%",
-    backgroundColor: 'red',
+    backgroundColor: '#B83232',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
+  },
+  logo: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center"
   },
   text: {
     fontWeight: "bold",
