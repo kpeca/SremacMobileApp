@@ -10,7 +10,7 @@ const LoadingComponent = () => {
     fadeIn();
     setTimeout(() => {
       fadeOut();
-    },2300)
+    },5500)
   },[])
 
   const fadeIn = () => {
