@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	SafeAreaView,
 	StyleSheet,
@@ -10,7 +10,12 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 
-const Pocetna = ({ navigation }: { navigation: any }) => {
+const Pocetna = ({ navigation, data }: { navigation: any, data:any}) => {
+
+
+  console.log("DATA :", data)
+
+  // if (!data) return <Text>Loading</Text>
 	return (
 		<>
 			<Header navigation={navigation} />
@@ -23,6 +28,7 @@ const Pocetna = ({ navigation }: { navigation: any }) => {
 					<View style={styles.image}>
 						<Image
 							source={require('../assets/pocetna.png')}
+							// source={matches.awayLogo}
 							style={{ width: 420, height: 220 }}
 						/>
 					</View>
@@ -33,18 +39,24 @@ const Pocetna = ({ navigation }: { navigation: any }) => {
 						</View>
 						<View style={styles.teams}>
 							<Image
-								source={require('../assets/logo9.png')}
+								// source={require('../assets/logo9.png')}
+								source={{uri: data[0].homeLogo}}
 								style={{ width: 45, height: 66 }}
 							/>
 							<Text style={styles.resultText}> - </Text>
 							<Image
-								source={require('../assets/logo9.png')}
+								// source={require('../assets/logo9.png')}
+								source={{uri: data[0].awayLogo}}
 								style={{ width: 45, height: 66 }}
 							/>
 						</View>
+            <View style={styles.teamNames}>
+              <Text style={styles.teamNameLeft}>{data[0].homeName}</Text>
+              <Text style={styles.teamNameRight}>{data[0].awayName}</Text>
+            </View>
 						<View style={styles.cardFooter}>
-							<Text style={styles.footerText}>31.03.2022</Text>
-							<Text style={styles.footerText}>Deč</Text>
+							<Text style={styles.footerText}>{data[0].date}</Text>
+							<Text style={styles.footerText}>{data[0].location}</Text>
 						</View>
 					</View>
 					<View style={[styles.card, styles.shadowProp]}>
@@ -54,18 +66,26 @@ const Pocetna = ({ navigation }: { navigation: any }) => {
 						</View>
 						<View style={styles.teams}>
 							<Image
-								source={require('../assets/logo9.png')}
-								style={{ width: 45, height: 66 }}
+								// source={require('../assets/logo9.png')}
+								source={{uri: data[1].homeLogo}}
+
+								style={{ width: 40, height: 60 }}
 							/>
 							<Text style={styles.resultText}>3 - 0</Text>
 							<Image
-								source={require('../assets/logo9.png')}
-								style={{ width: 45, height: 66 }}
+								// source={require('../assets/logo9.png')}
+								source={{uri: data[1].awayLogo}}
+
+								style={{ width: 40, height: 60 }}
 							/>
 						</View>
+            <View style={styles.teamNames}>
+              <Text style={styles.teamNameLeft}>{data[1].homeName}</Text>
+              <Text style={styles.teamNameRight}>{data[1].awayName}</Text>
+            </View>
 						<View style={styles.cardFooter}>
-							<Text style={styles.footerText}>31.03.2022</Text>
-							<Text style={styles.footerText}>Deč</Text>
+							<Text style={styles.footerText}>{data[1].date}</Text>
+							<Text style={styles.footerText}>{data[1].location}</Text>
 						</View>
 					</View>
 				</View>
@@ -84,7 +104,7 @@ const styles = StyleSheet.create({
 	image: { flexDirection: 'row' },
 	card: {
 		width: '80%',
-		height: '25%',
+		height: '30%',
 		backgroundColor: '#B83232',
 		borderRadius: 5
 	},
@@ -108,7 +128,7 @@ const styles = StyleSheet.create({
 	text: {
 		color: '#FFF',
 		fontWeight: 'bold',
-		fontSize: 20
+		fontSize: 20,
 	},
 	teams: {
 		flexDirection: 'row',
@@ -116,13 +136,23 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		marginLeft: 40,
-		marginRight: 40
+		marginRight: 40,
+    marginTop: 10
 	},
 	cardFooter: {
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 10
 	},
+  teamNames: {
+    flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', height: 35
+  },
+  teamNameLeft: {
+    color: "#fff", marginRight: 60 , fontSize: 20, fontWeight: 'bold'
+  },
+  teamNameRight: {
+    color: "#fff" , fontSize: 20, fontWeight: 'bold'
+  },
 	footerText: {
 		color: '#fff',
 		fontWeight: 'bold',

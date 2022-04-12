@@ -10,12 +10,28 @@ import LoadingComponent from './components/LoadingComponent';
 export default function App() {
 
   const [loading, setLoading] = useState(true)
+  const [matches, setMatches] = useState([])
 
   useEffect(() => {
+    fetchData()
     setTimeout(() => {
       setLoading(false);
     }, 7000)
-  }, [])
+
+  }, []);
+
+  const fetchData = async () => {
+    let result = await fetch('http://192.168.1.9:5000/matches');
+    let data = await result.json();
+    console.log("DATA ", data);
+
+
+    setMatches(data.matches);
+    // console.warn(data);
+  }
+
+
+  // console.log(matches)
   return (
     <>
       
@@ -26,7 +42,7 @@ export default function App() {
       <>
       <StatusBar/>
       <NavigationContainer >
-        <DrawerNav />
+        <DrawerNav data={matches} />
       </NavigationContainer>
       </>
       }

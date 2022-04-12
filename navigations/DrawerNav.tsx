@@ -10,7 +10,7 @@ import CustomDrawer from '../components/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNav = () => {
+const DrawerNav = ({data} : {data:any}) => {
   return (
 
       <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />}  useLegacyImplementation initialRouteName="Pocetna"
@@ -38,11 +38,15 @@ const DrawerNav = () => {
         }
       }}
       >
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="Pocetna"
-          component={Pocetna}
+          // component={Pocetna }
+          // component={() => <Pocetna navigation data={data}/>}
           options={{ drawerLabel: 'POČETNA' , headerShown: false }}
-        />
+        /> */}
+        <Drawer.Screen name="Hello" options={{ drawerLabel: 'POČETNA', headerShown: false}}>
+          {props => <Pocetna {...props} data={data} />}
+        </Drawer.Screen>
         <Drawer.Screen
           name="Igraci"
           component={Igraci}
