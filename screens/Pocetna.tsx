@@ -71,7 +71,7 @@ const Pocetna = ({ navigation, data }: { navigation: any, data:any}) => {
 
 								style={{ width: 40, height: 60 }}
 							/>
-							<Text style={styles.resultText}>3 - 0</Text>
+							<Text style={styles.resultText}>{data[1].homeScored} - {data[1].awayScored}</Text>
 							<Image
 								// source={require('../assets/logo9.png')}
 								source={{uri: data[1].awayLogo}}
