@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'; 
-import { FlipInEasyX } from 'react-native-reanimated';
+
 
 const Header = ({navigation}: {navigation: any}) => {
   return (
