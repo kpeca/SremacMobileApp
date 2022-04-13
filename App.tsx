@@ -21,7 +21,7 @@ export default function App() {
   }, []);
 
   const fetchData = async () => {
-    let result = await fetch('http://192.168.1.9:5000/matches');
+    let result = await fetch('https://sremac.herokuapp.com/matches');
     let data = await result.json();
     console.log("DATA ", data);
 
