@@ -11,7 +11,7 @@ const Tabela = ({navigation}: {navigation: any}) => {
       <Header navigation={navigation}/>
       <PageTitle title='TABELA'/>
 
-      <View  style={{flex:0.7, position: "relative", width: 600, height: 400 , left: -210, backgroundColor: "#fff" }}>
+      <View  style={{flex:0.7, position: "relative", width: 600, height: 400 , left: -185, backgroundColor: "#fff" }}>
       <WebView
             style={{height: 350, }}
             originWhitelist={['*']}

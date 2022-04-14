@@ -6,7 +6,8 @@ import {
 	Text,
 	View,
 	StatusBar,
-	Image
+	Image,
+  ScrollView
 } from 'react-native';
 import Header from '../components/Header';
 
@@ -21,9 +22,10 @@ const Pocetna = ({ navigation, data }: { navigation: any, data:any}) => {
 			<Header navigation={navigation} />
 			<LinearGradient
 				style={{ flex: 1 }}
-				colors={['#B83232', '#FFF']}
-				locations={[0.22, 0.66]}
+				colors={['#FFF', '#B83232']}
+				locations={[0.12, 0.9]}
 			>
+        <ScrollView >
 				<View style={styles.container}>
 					<View style={styles.image}>
 						<Image
@@ -88,7 +90,16 @@ const Pocetna = ({ navigation, data }: { navigation: any, data:any}) => {
 							<Text style={styles.footerText}>{data[1].location}</Text>
 						</View>
 					</View>
+          <View style={{ width: '100%', opacity: 0.4, marginTop: 30}}>
+          <Image
+								source={require('../assets/pocetnafooter2.png')}
+								// source={{uri: data[1].awayLogo}}
+
+								style={{ width: '100%' }}
+							/>
+          </View>
 				</View>
+          </ScrollView>
 			</LinearGradient>
 		</>
 	);
@@ -99,12 +110,12 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		marginBottom: 40
 	},
 	image: { flexDirection: 'row' },
 	card: {
 		width: '80%',
-		height: '30%',
+    margin: 10,
+		height: '20%',
 		backgroundColor: '#B83232',
 		borderRadius: 5
 	},
