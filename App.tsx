@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Header from './components/Header';
 import DrawerNav from './navigations/DrawerNav';
 import LoadingComponent from './components/LoadingComponent';
+import { PlayerProvider } from './context/PlayerContext';
 
 export default function App() {
 
@@ -34,7 +35,8 @@ export default function App() {
   // console.log(matches)
   return (
     <>
-      
+      <PlayerProvider>
+
       {loading &&   
       <LoadingComponent/>
       }
@@ -46,6 +48,7 @@ export default function App() {
       </NavigationContainer>
       </>
       }
+      </PlayerProvider>
     </>
 
   );

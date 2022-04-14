@@ -5,6 +5,7 @@ import Igraci from '../screens/Igraci';
 import Istorijat from '../screens/Istorijat';
 import Tabela from '../screens/Tabela';
 import CustomDrawer from '../components/CustomDrawer';
+import Detalji from '../screens/Detalji';
 
 
 
@@ -61,6 +62,11 @@ const DrawerNav = ({data} : {data:any}) => {
           name="Tabela"
           component={Tabela}
           options={{ drawerLabel: 'TABELA', headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Detalji"
+          component={Detalji}
+          options={{ drawerLabel: 'Detalji', headerShown: false, drawerItemStyle: { display: 'none' } }}
         />
       </Drawer.Navigator>
     );

@@ -3,62 +3,67 @@ import { SafeAreaView, StyleSheet, Text, View, StatusBar, ScrollView } from 'rea
 import Header from '../components/Header';
 import PageTitle from '../components/PageTitle';
 import PlayerCard from '../components/PlayerCard';
+import { usePlayerContext } from '../context/PlayerContext';
 
 const Igraci = ({navigation}: {navigation: any}) => {
 
-  let igraci = [{
-    ime : 'Leo',
-    prezime: 'Mesi',
-    broj: 11,
-    pozicija: 'napadac'
-  },
-  {
-    ime : 'Kristijano',
-    prezime: 'Ronaldo',
-    broj: 7,
-    pozicija: 'napadac'
-  },
-  {
-    ime : 'Manuel',
-    prezime: 'Nojer',
-    broj: 99,
-    pozicija: 'golman'
-  },
-  {
-    ime : 'David',
-    prezime: 'De Gea',
-    broj: 7,
-    pozicija: 'golman'
-  },
-  {
-    ime : 'Nemanja',
-    prezime: 'Vidic',
-    broj: 7,
-    pozicija: 'odbrana'
-  },
-  {
-    ime : 'Nemanja',
-    prezime: 'Modric',
-    broj: 7,
-    pozicija: 'sredina'
-  },
-  {
-    ime : 'Edgar',
-    prezime: 'Davids',
-    broj: 7,
-    pozicija: 'sredina'
-  },
-  {
-    ime : 'Karim',
-    prezime: 'Benzema',
-    broj: 14,
-    pozicija: 'napadac'
-  }]
+  let { igraci } = usePlayerContext();
 
-  let golmani = igraci.filter(igrac => igrac.pozicija === 'golman')
-  let odbrana = igraci.filter(igrac => igrac.pozicija === 'odbrana')
-  let sredina = igraci.filter(igrac => igrac.pozicija === 'sredina')
-  let napadaci = igraci.filter(igrac => igrac.pozicija === 'napadac')
+  console.log
+
+  // let igraci = [{
+  //   ime : 'Leo',
+  //   prezime: 'Mesi',
+  //   broj: 11,
+  //   pozicija: 'napadac'
+  // },
+  // {
+  //   ime : 'Kristijano',
+  //   prezime: 'Ronaldo',
+  //   broj: 7,
+  //   pozicija: 'napadac'
+  // },
+  // {
+  //   ime : 'Manuel',
+  //   prezime: 'Nojer',
+  //   broj: 99,
+  //   pozicija: 'golman'
+  // },
+  // {
+  //   ime : 'David',
+  //   prezime: 'De Gea',
+  //   broj: 7,
+  //   pozicija: 'golman'
+  // },
+  // {
+  //   ime : 'Nemanja',
+  //   prezime: 'Vidic',
+  //   broj: 7,
+  //   pozicija: 'odbrana'
+  // },
+  // {
+  //   ime : 'Nemanja',
+  //   prezime: 'Modric',
+  //   broj: 7,
+  //   pozicija: 'sredina'
+  // },
+  // {
+  //   ime : 'Edgar',
+  //   prezime: 'Davids',
+  //   broj: 7,
+  //   pozicija: 'sredina'
+  // },
+  // {
+  //   ime : 'Karim',
+  //   prezime: 'Benzema',
+  //   broj: 14,
+  //   pozicija: 'napadac'
+  // }]
+
+  let golmani = igraci.filter((igrac: { pozicija: string; }) => igrac.pozicija === 'golman')
+  let odbrana = igraci.filter((igrac: { pozicija: string; }) => igrac.pozicija === 'odbrana')
+  let sredina = igraci.filter((igrac: { pozicija: string; }) => igrac.pozicija === 'sredina')
+  let napadaci = igraci.filter((igrac: { pozicija: string; }) => igrac.pozicija === 'napadac')
   return (
     <>
       <Header navigation={navigation}/>
@@ -69,26 +74,26 @@ const Igraci = ({navigation}: {navigation: any}) => {
         <Text style={styles.golmaniText}>Golmani</Text>
       </View>
 
-      {golmani.map((igrac => (
-        <PlayerCard  igrac={igrac} />
+      {golmani.map(((igrac: any) => (
+        <PlayerCard key={igrac.broj}  igrac={igrac}  navigation={navigation}/>
       )))}
       <View style={styles.golmani}>
         <Text style={styles.golmaniText}>Odbrana</Text>
       </View>
-      {odbrana.map((igrac => (
-        <PlayerCard  igrac={igrac} />
+      {odbrana.map(((igrac: any) => (
+        <PlayerCard key={igrac.broj} igrac={igrac} navigation={navigation}/>
       )))}
       <View style={styles.golmani}>
         <Text style={styles.golmaniText}>Sredina</Text>
       </View>
-      {sredina.map((igrac => (
-        <PlayerCard  igrac={igrac} />
+      {sredina.map(((igrac: any) => (
+        <PlayerCard key={igrac.broj} igrac={igrac} navigation={navigation}/>
       )))}
       <View style={styles.golmani}>
         <Text style={styles.golmaniText}>Napad</Text>
       </View>
-      {napadaci.map((igrac => (
-        <PlayerCard  igrac={igrac} />
+      {napadaci.map(((igrac: any) => (
+        <PlayerCard key={igrac.broj} igrac={igrac} navigation={navigation}/>
       )))}
     </ScrollView >
     </View>
