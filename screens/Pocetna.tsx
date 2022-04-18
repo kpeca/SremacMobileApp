@@ -25,7 +25,7 @@ const Pocetna = ({ navigation, data }: { navigation: any, data:any}) => {
 				colors={['#FFF', '#B83232']}
 				locations={[0.12, 0.9]}
 			>
-        <ScrollView >
+        <ScrollView scrollIndicatorInsets={{ right: 1 }} >
 				<View style={styles.container}>
 					<View style={styles.image}>
 						<Image

@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View, Platform } from 'react-native'
 import Header from '../components/Header'
 import DetailsCardText from '../components/UI/DetailsCardText';
 import { usePlayerContext } from '../context/PlayerContext';
@@ -25,7 +25,7 @@ const Detalji = ({route, navigation} : {route: any,navigation: any}) => {
         <View style={styles.nameWrapper}>
           <Text style={styles.nameText}>{igrac.ime} {igrac.prezime}</Text>
           <Text style={styles.numberText}>{igrac.broj}</Text>
-          <Image source={require('../assets/messi.png')} style={{ width: 360, height: 237, position: 'absolute', top: 80, opacity: 0.7 }}/>
+          <Image source={require('../assets/messi.png')} style={styles.image}/>
           <View style={styles.infoWrapper}>
             <DetailsCardText> Datum rođenja: 24.06.1987. </DetailsCardText>
             <DetailsCardText> Visina: 169cm </DetailsCardText>
@@ -72,8 +72,17 @@ const styles = StyleSheet.create({
     fontSize: 240,
     color: '#B83232',
     position: 'absolute',
-    top: -20,
-    fontWeight: 'bold'
+    // top: -20,
+    fontWeight: 'bold',
+    top: Platform.OS === 'ios' ? 0 : -20
+  },
+  image: {
+    width: 360, 
+    height: 237, 
+    position: 'absolute',
+    // top: 120, 
+    opacity: 1,
+    top: Platform.OS === 'ios' ? 100 : 110
   },
   infoWrapper: {
     width: 360,
@@ -81,9 +90,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.3)',
     // opacity: 0.3,
     position: 'absolute',
-    top: 250,
+    // top: 250,
+    top: Platform.OS === 'ios' ? 280 : 250,
     justifyContent: 'space-around',
-    marginLeft: 5,
     shadowColor: '#000',
 		shadowOffset: {
 			width: 15,

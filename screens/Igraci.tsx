@@ -69,7 +69,7 @@ const Igraci = ({navigation}: {navigation: any}) => {
       <Header navigation={navigation}/>
       <PageTitle title='IGRAČI'/>
     <View style={styles.container}>
-    <ScrollView  style={{ height: 200 }} contentContainerStyle= {{alignItems: 'center', justifyContent: 'flex-start'}}>
+    <ScrollView scrollIndicatorInsets={{ right: 1 }} style={{ height: 200 }} contentContainerStyle= {{alignItems: 'center', justifyContent: 'flex-start'}}>
       <View style={styles.golmani}>
         <Text style={styles.golmaniText}>Golmani</Text>
       </View>
